@@ -4,17 +4,16 @@ import java.util.Random;
 
 public class Lab1 {
 	
-	/* (1) Write code to print to the console 1,000 randomly generated 
-		DNA 3 mers (e.g. “ACA”, “TCG” ) where the frequency of A,C,G and T 
-		is 25% and is uniformly sampled. */ 
 
 	public static void main(String[] args)
 		{ 
 		Random random = new Random();
 		
-		for( int x=0; x < 1000; ) // iterates 1000 times
+		int aaa = 0;
+		
+		for( int x=0; x < 1000; ) 
 			{ 
-			String s = ""; 
+			String s = "";
 			for (int y=0; y<3; y++)
 				{
 				int n = random.nextInt(4);
@@ -27,17 +26,16 @@ public class Lab1 {
 				else if (n == 3)
 					s += "T";
 				}
-			System.out.println(s);
+				if (s.equals("AAA"))
+					aaa++;
+			//System.out.println(s);
 		
 			x++; // increments x to reset the loop 
 			}
+		System.out.println("3mer AAA was generated " + aaa + " times.");
 			
 		}
-/* (2) Have your code track how often it prints out the 3 mer (“AAA”) 
-How often would you expect to see this 3mer by chance?  Is Java’s number
-close to the number that you would expect?
-*/ 
-	
+
 	
 }
 
