@@ -32,12 +32,11 @@ public class Lab2
 		// loop: for now it just iterates 10 times, fix later to be concurrent with timer 
 		for( int x=0; x < 10; x++) 
 		{
-			int n = random.nextInt(19); // choose random integer 0-20 to index FULL_NAMES array thus choosing an AA to ask
+			int n = random.nextInt(19); // choose random integer 0-19 to index FULL_NAMES array thus choosing an AA to ask
 			System.out.println("What is the abbreviated name for " + FULL_NAMES[n] + " ?");
 			String user_answer = System.console().readLine().toUpperCase(); 
 
-			
-			if (user_answer == SHORT_NAMES[n])
+			if (user_answer.equals(SHORT_NAMES[n]))
 			{
 				System.out.println("Correct!");
 				correct_responses++; 
