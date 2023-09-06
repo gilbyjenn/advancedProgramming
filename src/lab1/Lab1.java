@@ -66,3 +66,10 @@ public class Lab1 {
 		}
 	
 }
+
+
+/* With equal probabilities we expect AAA to occur at a frequency of 0.0156, about 10 in every 1000 times. 
+ * With the adjusted probabilities, we expect AAA to occur at a frequency of 0.0017, about 1.7 in every 1000 times. 
+ * When the code is executed, we are seeing what we would expect in the resulting AAA counts */
+
+
