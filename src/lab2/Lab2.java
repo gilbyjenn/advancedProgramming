@@ -38,11 +38,15 @@ public class Lab2
 
 			
 			if (user_answer == SHORT_NAMES[n])
-				//System.out.println("Correct!")
+			{
+				System.out.println("Correct!");
 				correct_responses++; 
+			}
 				
 			else
+			{
 				System.out.println("Incorrect");
+			}
 		}
 		
 		System.out.println("Final score: " + correct_responses);
