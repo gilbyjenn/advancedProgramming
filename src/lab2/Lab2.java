@@ -2,16 +2,14 @@ package lab2;
 
 import java.util.Random;
 
-public class Lab2 
-{
+public class Lab2 {
 	public static String[] SHORT_NAMES = 
 		{ "A","R", "N", "D", "C", "Q", "E", 
 		"G",  "H", "I", "L", "K", "M", "F", 
 		"P", "S", "T", "W", "Y", "V" };
 
 	public static String[] FULL_NAMES = 
-		{
-		"alanine","arginine", "asparagine", 
+		{ "alanine","arginine", "asparagine", 
 		"aspartic acid", "cysteine",
 		"glutamine",  "glutamic acid",
 		"glycine" ,"histidine","isoleucine",
@@ -21,39 +19,32 @@ public class Lab2
 		"tyrosine", "valine"};
 
 
-	public static void main(String[] args)
-	{
-		// initialize reponse counts 
-		int correct_responses = 0;
-		// int false_responses = 0; 
+	public static void main(String[] args){
 		
-		Random random = new Random(); // does this have to be in the method or can it be up where i call the library? 
+		int correctResponses = 0;
+		Random random = new Random();
 		
-		// loop: for now it just iterates 10 times, fix later to be concurrent with timer 
-		for( int x=0; x < 10; x++) 
-		{
-			int n = random.nextInt(19); // choose random integer 0-19 to index FULL_NAMES array thus choosing an AA to ask
-			System.out.println("What is the abbreviated name for " + FULL_NAMES[n] + " ?");
-			String user_answer = System.console().readLine().toUpperCase(); 
+		long startTime = System.currentTimeMillis();
+		long endTime = startTime + 30000;
+		 
+		while(System.currentTimeMillis() < endTime){
+			
+			int n = random.nextInt(20);
+			System.out.println("What is the abbreviated name for " + FULL_NAMES[n] + "?");
+			String userAnswer = System.console().readLine().toUpperCase(); 
 
-			if (user_answer.equals(SHORT_NAMES[n]))
-			{
-				System.out.println("Correct!");
-				correct_responses++; 
-			}
+			if (userAnswer.equals(SHORT_NAMES[n])){
 				
-			else
-			{
-				System.out.println("Incorrect");
-			}
+				System.out.println("Correct!");
+				correctResponses++; }
+				
+			else{
+				
+				System.out.println("Incorrect");}
 		}
-		
-		System.out.println("Final score: " + correct_responses);
-		
+		System.out.println("\nTime is up!\nFinal score: " + correctResponses);
 	}
 
-
-	}	
-
+}
 
 
