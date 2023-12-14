@@ -1,10 +1,10 @@
 package FinalProject;
 
-//import java.util.ArrayList;
-//import java.util.List;
+import java.io.IOException;
+import java.util.List;
 
+import FinalProject.gffParser.gffEntry;
 
-//import FinalProject.gffParser.gffEntry;
 
 
 public class CLI {
@@ -13,35 +13,44 @@ public class CLI {
 	public static void main(String[] args) 
 	{
 		int argIndex = 0;
-		//List<String> parameters = new ArrayList<>();
-			// see trimmomatic trimmomatic.java and trimmomaticPE.java files (main and run respectively) for ideas on structures and calls 
+		String filepath = null;
+		String geneFile = null;
+
 
 		if ( args.length == 0) {
 			System.out.println("no arguments provided.");
 		}
-		while (argIndex < args.length)
-			{
-			String arg = args[argIndex++];
-			System.out.println(arg);
+		
+		while (argIndex < args.length){
 			
-			if(arg.startsWith("-"))
-				{			
-				if (arg.equals("-g")) {
-					String filepath = args[argIndex++];
-					System.out.println("file path:" + filepath);
-				}
+			String arg = args[argIndex++];
+			
+			if(arg.startsWith("-")){	
 				
-				else if (arg.equals("-f")) {
-					// fasta file 
+				if (arg.equals("-g")) {
+					filepath = args[argIndex++];
+					System.out.println("gff file path:" + filepath);
 				}
+
 				
 				else if (arg.equals("-i")) {
-					// tsv file listing gene names to query 
+					geneFile = args[argIndex];
+					System.out.println("gene name file path:" + geneFile);
 				}
-		
-				}
-			// other optional parameters: 
 			}
+		}
+		
+		
+    	try {
+            List<gffEntry> entries = gffParser.parseGFFFile(filepath, geneFile);
+
+            for (gffEntry entry : entries) {
+                System.out.println(entry);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    	
 	
 	}
 }
